@@ -1,11 +1,11 @@
 module Utilities where
 
+import GlobalTypes
+
 import qualified Data.ByteString as BL
 import Data.Word
 import Data.Bits
 import Data.Maybe
-
-type Mapping = (Int, Int)
 
 -- Utilities
 
