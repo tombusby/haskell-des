@@ -1,11 +1,12 @@
-module Utilities where
+module Utilities (blank64BitBlock, fixLittleEndian, testBitAt, setBitAt, permute, listPermute) where
 
-import GlobalTypes
+import GlobalTypes(Mapping)
 
-import qualified Data.ByteString as BL
-import Data.Word
-import Data.Bits
-import Data.Maybe
+
+--import qualified Data.ByteString as BL
+import Data.Word(Word8)
+import Data.Bits(Bits, testBit, setBit, bitSizeMaybe)
+import Data.Maybe(fromJust)
 
 -- Utilities
 

@@ -1,10 +1,10 @@
-module RoundPermutations where
+module RoundPermutations (initialPermutation, finalPermutation) where
 
-import GlobalTypes
-import Utilities
-import RoundMappings
+import Utilities(blank64BitBlock, listPermute)
+import RoundMappings(ipMapping, fpMapping)
 
-import Data.Word
+import Data.Word(Word8)
+
 
 initialPermutation :: [Word8] -> [Word8]
 initialPermutation bs = listPermute ipMapping bs blank64BitBlock

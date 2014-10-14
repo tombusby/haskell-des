@@ -1,9 +1,10 @@
-module DebugDisplay where
+module DebugDisplay (toBinaryRepresentation) where
 
-import Utilities
+import Utilities(testBitAt)
 
-import Data.Word
-import Data.Bits
+import Data.Word(Word8)
+import Data.Bits(Bits)
+
 
 -- Useful Debug Display Functions
 

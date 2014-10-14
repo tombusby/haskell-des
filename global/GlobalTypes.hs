@@ -1,3 +1,3 @@
-module GlobalTypes where
+module GlobalTypes (Mapping) where
 
 type Mapping = (Int, Int)
