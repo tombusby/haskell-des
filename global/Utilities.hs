@@ -1,4 +1,4 @@
-module Utilities (blank64BitBlock, fixLittleEndian, testBitAt, setBitAt, permute, listPermute, randomRIOs) where
+module Utilities (blank64BitBlock, fixLittleEndian, testBitAt, setBitAt, permute, listPermute, printError, printErrors, randomRIOs) where
 
 --import qualified Data.ByteString as BL
 import Data.Word(Word8)
@@ -8,7 +8,7 @@ import System.Random(Random, getStdRandom, randomRs, split)
 
 import Global(Mapping)
 
--- Utilities
+-- Binary Manipulation
 
 blank64BitBlock :: [Word8]
 blank64BitBlock = replicate 8 (0 :: Word8)
@@ -37,6 +37,21 @@ listPermute :: [Mapping] -> [Word8] -> [Word8] -> [Word8]
 listPermute [] _ os = os
 listPermute (m:ms) is os = listPermute ms is $ permute m is os
 
+-- Error IO
+
+printError :: Error -> IO ()
+printError s = hPutStrLn stderr $ "Error: " ++ s
+
+printErrors :: String -> [Error] -> IO ()
+printErrors s es = do
+	printError $ "There was a problem " ++ s ++ ":\n"
+	printErrors' es
+	where
+		printErrors' :: [Error] -> IO ()
+		printErrors' [] = return ()
+		printErrors' (e:es) = do
+			hPutStrLn stderr e
+			printErrors' es
 
 -- Random Number Generator
 

@@ -4,24 +4,9 @@ import System.Environment(getArgs, getProgName)
 import System.IO(hPutStrLn, stderr)
 
 import Global(Error, Command, Arg)
+import Utilities(printError, printErrors)
 import KeyGenerationEnvironment(keygenDefaultEnv, processKeygenArgs)
 import KeyGeneration(createKeyfile)
-
--- Utility Functions
-
-printError :: Error -> IO ()
-printError s = hPutStrLn stderr $ "Error: " ++ s
-
-printErrors :: String -> [Error] -> IO ()
-printErrors s es = do
-	printError $ "There was a problem " ++ s ++ ":\n"
-	printErrors' es
-	where
-		printErrors' :: [Error] -> IO ()
-		printErrors' [] = return ()
-		printErrors' (e:es) = do
-			hPutStrLn stderr e
-			printErrors' es
 
 -- Main Program Logic
 
