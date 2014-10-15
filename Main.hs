@@ -27,17 +27,21 @@ processArgs "encrypt" args = performEncryptAction args
 processArgs "decrypt" args = performDecryptAction args
 processArgs c _ = printError $ c ++ " is not a valid action"
 
+-- TODO
 performKeygenAction :: [Arg] -> IO ()
-performKeygenAction args = putStrLn $ "keygen " ++ (show args) 
+performKeygenAction args = putStrLn $ "keygen " ++ (show args)
 
+-- TODO
 performEncryptAction :: [Arg] -> IO ()
-performEncryptAction args = putStrLn $ "encrypt " ++ (show args) 
+performEncryptAction args = putStrLn $ "encrypt " ++ (show args)
 
+-- TODO
 performDecryptAction :: [Arg] -> IO ()
-performDecryptAction args = putStrLn $ "decrypt " ++ (show args) 
+performDecryptAction args = putStrLn $ "decrypt " ++ (show args)
 
 
 -- Utility Functions
 
 printError :: String -> IO ()
 printError s = hPutStrLn stderr $ "Error: " ++ s
+
