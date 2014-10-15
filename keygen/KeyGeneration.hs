@@ -8,9 +8,6 @@ import Data.ByteString.Base64(encode)
 import Global(Rounds, KeyFilename, keyLengthInBytes)
 import Utilities(randomRIOs)
 
--- REMOVE LATER
-import DebugDisplay(toBinaryRepresentation)
-
 generateKey :: IO ByteString
 generateKey = do
   ns <- randomRIOs (0 :: Word8, 255 :: Word8)
