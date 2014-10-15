@@ -1,6 +1,6 @@
 module RoundMappings (ipMapping, fpMapping) where
 
-import GlobalTypes(Mapping)
+import Global(Mapping)
 
 import Data.Tuple(swap)
 

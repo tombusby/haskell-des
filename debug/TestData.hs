@@ -1,14 +1,8 @@
 module TestData (randomRIOs, constantBinaryBlock, randomBinaryBlock) where
 
 import Data.Word(Word8)
-import System.Random(Random, getStdRandom, randomRs, split)
 
-
--- Random Number Generator
-
-randomRIOs :: Random a => (a, a) -> IO [a]
-randomRIOs range =
-	getStdRandom $ \g -> let (a, b) = split g in (randomRs range a, b)
+import Utilities(randomRIOs)
 
 -- Test Data
 

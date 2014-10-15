@@ -1,12 +1,12 @@
-module Utilities (blank64BitBlock, fixLittleEndian, testBitAt, setBitAt, permute, listPermute) where
-
-import GlobalTypes(Mapping)
-
+module Utilities (blank64BitBlock, fixLittleEndian, testBitAt, setBitAt, permute, listPermute, randomRIOs) where
 
 --import qualified Data.ByteString as BL
 import Data.Word(Word8)
 import Data.Bits(Bits, testBit, setBit, bitSizeMaybe)
 import Data.Maybe(fromJust)
+import System.Random(Random, getStdRandom, randomRs, split)
+
+import Global(Mapping)
 
 -- Utilities
 
@@ -36,3 +36,11 @@ permute (f,t) is os = xs ++ (y':ys)
 listPermute :: [Mapping] -> [Word8] -> [Word8] -> [Word8]
 listPermute [] _ os = os
 listPermute (m:ms) is os = listPermute ms is $ permute m is os
+
+
+-- Random Number Generator
+
+randomRIOs :: Random a => (a, a) -> IO [a]
+randomRIOs range =
+	getStdRandom $ \g -> let (a, b) = split g in (randomRs range a, b)
+
