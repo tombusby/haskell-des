@@ -15,7 +15,7 @@ testThatApplyingInitialPermutationThenFinalPermutationReturnsTheInputData = do
 
 	-- Do assertion with fixed data
 	b <- return constantBinaryBlock
-	b' <- return $ finalPermutation . initialPermutation $ b
+	b' <- return . finalPermutation . initialPermutation $ b
 	assertb <- return $ b == b'
 
 	-- Show assert
@@ -24,7 +24,7 @@ testThatApplyingInitialPermutationThenFinalPermutationReturnsTheInputData = do
 	
 	-- Do assertion with random data
 	c <- randomBinaryBlock
-	c' <- return $ finalPermutation . initialPermutation $ c
+	c' <- return . finalPermutation . initialPermutation $ c
 	assertc <- return $ c == c'
 
 	-- Show assert
