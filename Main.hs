@@ -1,12 +1,43 @@
 module Main where
 
---import GlobalTypes
---import RoundPermutations
+import System.Environment(getArgs, getProgName)
+import System.IO(hPutStrLn, stderr)
 
-import System.Environment(getArgs)
+type Command = String
+type Arg = String
 
+
+-- Main Program Logic
 
 main :: IO ()
 main = do
 	args <- getArgs
-	putStrLn $ show args
+	case args of
+		[] -> printUsage
+		(a:as) -> processArgs a as
+
+printUsage :: IO ()
+printUsage = do
+	argv0 <- getProgName
+	putStrLn $ "Usage: " ++ argv0 ++ " (todo: specify arguments)"
+
+processArgs :: Command -> [Arg] -> IO ()
+processArgs "keygen" args = performKeygenAction args
+processArgs "encrypt" args = performEncryptAction args
+processArgs "decrypt" args = performDecryptAction args
+processArgs c _ = printError $ c ++ " is not a valid action"
+
+performKeygenAction :: [Arg] -> IO ()
+performKeygenAction args = putStrLn $ "keygen " ++ (show args) 
+
+performEncryptAction :: [Arg] -> IO ()
+performEncryptAction args = putStrLn $ "encrypt " ++ (show args) 
+
+performDecryptAction :: [Arg] -> IO ()
+performDecryptAction args = putStrLn $ "decrypt " ++ (show args) 
+
+
+-- Utility Functions
+
+printError :: String -> IO ()
+printError s = hPutStrLn stderr $ "Error: " ++ s
