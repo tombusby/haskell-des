@@ -7,7 +7,7 @@ import Data.Maybe(fromJust)
 import System.IO(hPutStrLn, stderr)
 import System.Random(Random, getStdRandom, randomRs, split)
 
-import Global(Mapping)
+import Global(Error, Mapping)
 
 -- Binary Manipulation
 
