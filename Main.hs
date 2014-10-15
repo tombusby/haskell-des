@@ -1,6 +1,6 @@
 module Main where
 
-i--mport GlobalTypes
+--import GlobalTypes
 --import RoundPermutations
 
 import System.Environment(getArgs)
