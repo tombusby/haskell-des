@@ -4,6 +4,7 @@ module Utilities (blank64BitBlock, fixLittleEndian, testBitAt, setBitAt, permute
 import Data.Word(Word8)
 import Data.Bits(Bits, testBit, setBit, bitSizeMaybe)
 import Data.Maybe(fromJust)
+import System.IO(hPutStrLn, stderr)
 import System.Random(Random, getStdRandom, randomRs, split)
 
 import Global(Mapping)

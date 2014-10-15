@@ -1,7 +1,6 @@
 module Main where
 
 import System.Environment(getArgs, getProgName)
-import System.IO(hPutStrLn, stderr)
 
 import Global(Error, Command, Arg)
 import Utilities(printError, printErrors)
