@@ -1,9 +1,16 @@
-module Test () where
+module Test (main) where
 
 import RoundPermutations(initialPermutation, finalPermutation)
 
 import TestData(constantBinaryBlock, randomBinaryBlock)
 import DebugDisplay(toBinaryRepresentation)
+
+
+-- Main function
+
+main :: IO ()
+main = do
+	testThatApplyingInitialPermutationThenFinalPermutationReturnsTheInputData
 
 
 -- Tests
@@ -31,9 +38,3 @@ testThatApplyingInitialPermutationThenFinalPermutationReturnsTheInputData = do
 	putStr "Test that random byte block returns itself with inital then final permute => "
 	putStrLn $ show assertc
 	putStr "\n"
-
--- Main function
-
-main :: IO ()
-main = do
-	testThatApplyingInitialPermutationThenFinalPermutationReturnsTheInputData

@@ -8,4 +8,4 @@ type KeyFilename = String
 type Mapping = (Int, Int)
 
 keyLengthInBytes :: Int
-keyLengthInBytes = 56
+keyLengthInBytes = 7
