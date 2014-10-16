@@ -29,5 +29,5 @@ processKeygenArgs env (a:as) = processKeygenArgs (modifyEnv env a) as
 			('-':'r':'=':tail) -> case readMaybe tail :: Maybe Int of
 				Just rounds -> setKeygenEnvRounds env rounds
 				Nothing -> addErrorToKeygenEnv env $ a ++ " does not specify a valid number of rounds"
-			('-':'o':'=':tail) -> setKeygenEnvKeyFilename env tail
+			('-':'k':'=':tail) -> setKeygenEnvKeyFilename env tail
 			otherwise -> addErrorToKeygenEnv env $ a ++ " is not a valid flag"
