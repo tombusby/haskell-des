@@ -5,8 +5,6 @@ import Text.Read(readMaybe)
 import Global(Error, Arg, Rounds, KeyFilename)
 
 type KeygenEnv = (Rounds, KeyFilename, [Error])
-type EncryptEnv = () -- TODO
-type DecryptEnv = () -- TODO
 
 keygenDefaultEnv :: KeygenEnv
 keygenDefaultEnv = (1, "key.txt", [])

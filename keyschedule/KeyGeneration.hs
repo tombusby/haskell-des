@@ -11,7 +11,7 @@ import Utilities(randomRIOs)
 generateKey :: Rounds -> IO ByteString
 generateKey rounds = do
 	ns <- randomRIOs (zeroByte, oneByte)
-	return . encode . pack . concat $ keys ns
+	return . encode . pack . concat . keys $ ns
   	where
   		keys :: [Word8] -> [[Word8]]
   		keys ns = [take keyLengthInBytes ns ++ [zeroByte] | n <- [1..rounds]]
