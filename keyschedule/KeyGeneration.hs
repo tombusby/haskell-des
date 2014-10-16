@@ -10,11 +10,13 @@ import Utilities(randomRIOs)
 
 generateKey :: Rounds -> IO ByteString
 generateKey rounds = do
-	ns <- randomRIOs (0 :: Word8, 255 :: Word8)
-	let keys = [take keyLengthInBytes ns ++ zeroByte | n <- [1..rounds]] in
-		return . encode . pack . concat $ keys
+	ns <- randomRIOs (zeroByte, oneByte)
+	return . encode . pack . concat $ keys ns
   	where
-  		zeroByte = [0 :: Word8]
+  		keys :: [Word8] -> [[Word8]]
+  		keys ns = [take keyLengthInBytes ns ++ [zeroByte] | n <- [1..rounds]]
+  		zeroByte = 0 :: Word8
+  		oneByte = 255 :: Word8
 
 createKeyfile :: Rounds -> KeyFilename -> IO ()
 createKeyfile rounds keyFilename = do
