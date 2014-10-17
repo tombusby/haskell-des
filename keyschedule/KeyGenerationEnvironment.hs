@@ -10,13 +10,13 @@ keygenDefaultEnv :: KeygenEnv
 keygenDefaultEnv = (1, "key.txt", [])
 
 setKeygenEnvRounds :: KeygenEnv -> Rounds -> KeygenEnv
-setKeygenEnvRounds (_, o, e) r = (r, o, e)
+setKeygenEnvRounds (_, k, e) r = (r, k, e)
 
 setKeygenEnvKeyFilename :: KeygenEnv -> KeyFilename -> KeygenEnv
-setKeygenEnvKeyFilename (r, _, e) o = (r, o, e)
+setKeygenEnvKeyFilename (r, _, e) k = (r, k, e)
 
 addErrorToKeygenEnv :: KeygenEnv -> Error -> KeygenEnv
-addErrorToKeygenEnv (r, o, e) e' = (r, o, e ++ [e'])
+addErrorToKeygenEnv (r, k, e) e' = (r, k, e ++ [e'])
 
 processKeygenArgs :: KeygenEnv -> [Arg] -> KeygenEnv
 processKeygenArgs env [] = env

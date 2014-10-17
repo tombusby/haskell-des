@@ -6,6 +6,8 @@ import Global(Error, Action, Arg)
 import Utilities(printError, printErrors)
 import KeyGenerationEnvironment(keygenDefaultEnv, processKeygenArgs)
 import KeyGeneration(createKeyfile)
+import EncryptEnvironment(encryptDefaultEnv, processEncryptArgs)
+import Encrypt(performEncrypt)
 
 
 -- Main Program Logic
@@ -41,9 +43,15 @@ performKeygenAction args = do
 	 else
 	 	createKeyfile rounds keyFilename
 
--- TODO
 performEncryptAction :: [Arg] -> IO ()
-performEncryptAction args = putStrLn $ "encrypt " ++ (show args)
+performEncryptAction args = do
+	(keyFilename, inputFilename, outputFilename, argErrors) <- return $ processEncryptArgs encryptDefaultEnv args
+	if length(argErrors) > 0 then do
+	 	printErrors "processing command line arguments" argErrors
+		putStr "\n"
+		printUsage
+	 else
+	 	performEncrypt keyFilename inputFilename outputFilename
 
 -- TODO
 performDecryptAction :: [Arg] -> IO ()
