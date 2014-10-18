@@ -9,8 +9,7 @@ import KeyGeneration(createKeyfile)
 import EncryptEnvironment(encryptDefaultEnv, processEncryptArgs)
 import Encrypt(performEncrypt)
 
-
--- Main Program Logic
+-- Main Program Control Structure
 
 main :: IO ()
 main = do

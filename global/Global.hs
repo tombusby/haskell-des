@@ -9,5 +9,7 @@ type InputFilename = String
 type OutputFilename = String
 type Mapping = (Int, Int)
 
+-- Key Generation Constants
+
 keyLengthInBytes :: Int
 keyLengthInBytes = 8

@@ -5,7 +5,6 @@ import Utilities(testBitAt)
 import Data.Word(Word8)
 import Data.Bits(Bits)
 
-
 -- Useful Debug Display Functions
 
 toBinaryRepresentation :: Bits a => [a] -> String

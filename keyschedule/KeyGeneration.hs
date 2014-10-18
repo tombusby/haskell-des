@@ -8,6 +8,8 @@ import Data.ByteString.Base64(encode)
 import Global(Rounds, KeyFilename, keyLengthInBytes)
 import Utilities(randomRIOs)
 
+-- Key Generation Control Structure
+
 generateKey :: Rounds -> IO ByteString
 generateKey rounds = do
 	ns <- randomRIOs (0 :: Word8, 255 :: Word8)

@@ -6,16 +6,7 @@ import KeyGeneration(generateKey)
 import qualified Data.ByteString as BS(length)
 
 import TestData(constantBinaryBlock, randomBinaryBlock)
-import DebugDisplay(toBinaryRepresentation)
-
-
--- Main function
-
-main :: IO ()
-main = do
-	testThatApplyingInitialPermutationThenFinalPermutationReturnsTheInputData
-	testThatKeysAreGeneratedToTheCorrectLength
-
+import DebugDisplay(toBinaryRepresentation) -- not called, but useful to have in scope in ghci
 
 -- Tests
 
@@ -65,3 +56,9 @@ testThatKeysAreGeneratedToTheCorrectLength = do
 	putStrLn $ show assert3
 	putStr "\n"
 
+-- Main function
+
+main :: IO ()
+main = do
+	testThatApplyingInitialPermutationThenFinalPermutationReturnsTheInputData
+	testThatKeysAreGeneratedToTheCorrectLength
