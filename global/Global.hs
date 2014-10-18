@@ -10,4 +10,4 @@ type OutputFilename = String
 type Mapping = (Int, Int)
 
 keyLengthInBytes :: Int
-keyLengthInBytes = 7
+keyLengthInBytes = 8

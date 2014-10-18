@@ -1,4 +1,4 @@
-module KeyGeneration (createKeyfile) where
+module KeyGeneration (createKeyfile, generateKey) where
 
 import Data.Word(Word8)
 import Data.ByteString(ByteString, pack)
@@ -10,15 +10,11 @@ import Utilities(randomRIOs)
 
 generateKey :: Rounds -> IO ByteString
 generateKey rounds = do
-	ns <- randomRIOs (zeroByte, oneByte)
-	return . encode . pack . concat . keys $ ns
-  	where
-  		keys :: [Word8] -> [[Word8]]
-  		keys ns = [take keyLengthInBytes ns ++ [zeroByte] | n <- [1..rounds]]
-  		zeroByte = 0 :: Word8
-  		oneByte = 255 :: Word8
+	ns <- randomRIOs (0 :: Word8, 255 :: Word8)
+	return . pack . concat $ [take keyLengthInBytes ns | n <- [1..rounds]]
 
 createKeyfile :: Rounds -> KeyFilename -> IO ()
 createKeyfile rounds keyFilename = do
 	key <- generateKey rounds
-	BS.writeFile keyFilename key
+	base64key <- return . encode $ key
+	BS.writeFile keyFilename base64key
