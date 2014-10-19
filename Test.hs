@@ -56,9 +56,28 @@ testThatKeysAreGeneratedToTheCorrectLength = do
 	putStrLn $ show assert3
 	putStr "\n"
 
+testThatGenerateKeyProducesADifferentKeyEachTimeItIsCalled :: IO ()
+testThatGenerateKeyProducesADifferentKeyEachTimeItIsCalled = do
+	-- Show test name
+	putStr "testThatGenerateKeyProducesADifferentKeyEachTimeItIsCalled\n\n"
+
+	-- Generate keys for comparison
+	key1 <- generateKey 1
+	key2 <- generateKey 2
+
+	-- Assert that the two keys are different
+	assert <- return $ key1 /= key2
+
+	-- Show assert
+	putStr "\tTest that generateKey produces a different key each time it's called => "
+	putStrLn $ show assert
+	putStr "\n"
+
+
 -- Main function
 
 main :: IO ()
 main = do
 	testThatApplyingInitialPermutationThenFinalPermutationReturnsTheInputData
 	testThatKeysAreGeneratedToTheCorrectLength
+	testThatGenerateKeyProducesADifferentKeyEachTimeItIsCalled
