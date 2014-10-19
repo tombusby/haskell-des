@@ -6,8 +6,6 @@ import Data.ByteString(ByteString, unpack)
 import qualified Data.ByteString as BS(readFile)
 import Data.ByteString.Base64(decodeLenient)
 
-import DebugDisplay(toBinaryRepresentation) -- REMOVE LATER
-
 performEncrypt :: KeyFilename -> InputFilename -> OutputFilename -> IO ()
 performEncrypt k i o = do
 	maybeKey <- getKeyFromFile k
