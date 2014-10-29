@@ -24,7 +24,11 @@ performEncrypt2 key i o = do
 	if not inputExists then
 		printErrors "reading the input file" ["The input file path " ++ i ++ " does not exist"]
 	 else
-	 	putStrLn "file found, this is a placeholder for where performEncrypt3 will be called"
+	 	performEncrypt3 key i o
+
+performEncrypt3 :: ByteString -> InputFilename -> OutputFilename -> IO ()
+performEncrypt3 key i o = do
+	putStrLn "file found, this is a placeholder for where the reading of the file will happen"
 
 -- Utility Functions
 
