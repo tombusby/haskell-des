@@ -11,4 +11,4 @@ The project is currently configured with a .ghci file so that Main.hs can be dir
 
 TODO:
 
-+ I need to set up a cabal file so that the base64-bytestring-1.0.0.1 dependency can be automatically resolved
++ I need to set up a cabal file so that the *base64-bytestring-1.0.0.1* and *random* dependencies can be automatically resolved
